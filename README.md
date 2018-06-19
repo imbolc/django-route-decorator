@@ -6,6 +6,14 @@ A flask-style `route` decorator for django views
 There is some contradiction between decoupling and DRY principles
 in django urls. Why not use flasky `@route` decorator to fix this issue?
 
+Install
+-------
+    pip install django-route-decorator
+
+It's compatible with django >= 2.0 only,
+because it uses new `urls.path` syntax.
+
+
 Simple things should be simple
 ------------------------------
 Just decorate your views with an instance of `Route`:
