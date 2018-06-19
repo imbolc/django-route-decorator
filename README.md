@@ -32,8 +32,8 @@ And don't forget to add the routes into your `urls.py`:
 
 Now you have your views binded to `/foo-view` and `/bar-view` respectively.
 
-You can also get map urlname -> url with `route.names` to pass them to
-frontend eg. In our case it would be:
+You can also get map urlname -> url with `route.names` and pass them to
+frontend maybe. In our case it would be:
 
     {
         'foo_view': '/foo-view',
