@@ -24,11 +24,12 @@ Just decorate your views with an instance of `Route`:
 
     @route
     def foo_view(request):
-        ...
+        # /foo-view
 
     @route
-    def bar_view(request):
-        ...
+    def bar__view(request):
+        # double underscore means a folder
+        # /bar/view
 
 
 And don't forget to add the routes into your `urls.py`:
@@ -45,7 +46,7 @@ frontend maybe. In our case it would be:
 
     {
         'foo_view': '/foo-view',
-        'bar_view': '/bar-view'
+        'bar__view': '/bar/view'
     }
 
 

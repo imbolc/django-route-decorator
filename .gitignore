@@ -3,3 +3,6 @@
 /.cache
 /*.egg-info
 /dist
+/.venv
+/.mypy_cache
+/build
