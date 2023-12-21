@@ -13,7 +13,7 @@ if sys.argv[-1] == "publish":
     sys.exit(0)
 
 setup(
-    version="0.1.1",
+    version="0.2.0",
     name="django-route-decorator",
     description="A flask-style `route` decorator for django views",
     long_description=open("./README.md").read(),
