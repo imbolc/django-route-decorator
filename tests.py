@@ -45,3 +45,32 @@ def test_with_prefixes():
         pass
 
     assert route.names["api:bar-name"] == "/api/bar"
+
+
+def test_with_class_as_view():
+    route = Route()
+
+    @route("/test", name="test-view")
+    class TestView:
+        @staticmethod
+        def as_view():
+            def view_func(request):
+                pass
+            return view_func
+
+    @route
+    def foo_view(request):
+        pass
+
+
+    assert len(route.names) == 2
+    assert route.names["foo_view"] == "/foo-view"
+    assert route.names["test-view"] == "/test"
+
+    assert len(route.patterns) == 2
+    assert (
+        str(route.patterns[1]) == "<URLPattern 'foo-view' [name='foo_view']>"
+    )
+    assert (
+        str(route.patterns[0]) == "<URLPattern 'test' [name='test-view']>"
+    )

@@ -1,3 +1,4 @@
+import inspect
 from typing import Callable, Dict, List, Tuple, Union
 
 from django import urls
@@ -27,7 +28,12 @@ class Route:
                 urlpath = urlpath.replace("__", "/")  # type: ignore
             urlpath = urlpath.replace("_", "-")  # type: ignore
             urlpath = self.url_prefix + "/" + urlpath.lstrip("/")
-            self.routes[urlname] = urlpath, f
+            
+            # Check if f is a class with an as_view method
+            if inspect.isclass(f) and hasattr(f, 'as_view'):
+                self.routes[urlname] = urlpath, f.as_view()
+            else:
+                self.routes[urlname] = urlpath, f
             return f
 
         if callable(path):
